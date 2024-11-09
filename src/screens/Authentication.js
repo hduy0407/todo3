@@ -5,8 +5,8 @@ import { useUser } from '../context/useUser.js';
 
 
 export const AuthenticationMode = Object.freeze({
-    Login: 'signin',
-    Register: 'signup',
+    Login: 'Login',
+    Register: 'Register'
 })
 
 export default function Authentication({authenticationMode}) {

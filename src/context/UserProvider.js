@@ -12,7 +12,7 @@ export default function UserProvider({children}) {
         const json = JSON.stringify(user)
         const headers = {headers: {'Content-Type':'application/json'}}
         try {
-            await axios.post(url + '/user/signup', json, headers)
+            await axios.post(url + '/user/register', json, headers)
             setUser({email: '', password: '', token: ''})
         } catch(error) {
             throw error
@@ -23,7 +23,7 @@ export default function UserProvider({children}) {
         const json = JSON.stringify(user)
         const headers = {headers: {'Content-Type':'application/json'}}
         try {
-            const response = await axios.post(url + '/user/signin', json, headers)
+            const response = await axios.post(url + '/user/login', json, headers)
             const token = response.data.token
             setUser({...response.data, token})
             sessionStorage.setItem("user", JSON.stringify(response.data))
