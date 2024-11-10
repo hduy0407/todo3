@@ -4,7 +4,7 @@ import { ApiError } from '../helpers/ApiError.js'
 import jwt from 'jsonwebtoken'
 import { compare } from 'bcrypt'
 
-const invalid_credentials_message = 'Invalid credentials for user'
+
 
 const {sign} = jwt
 
@@ -13,7 +13,7 @@ const postRegistation = async(req, res, next) => {
         if (!req.body.email || req.body.length === 0) {
             return next(new ApiError('Invalid email for user', 400))
         }
-        if (!req.body.email || req.body.length === 0) {
+        if (!req.body.password || req.body.password.length < 8) {
             return next(new ApiError('Invalid password for user', 400))
         }
         const hashedPassword = await hash(req.body.password, 10)
@@ -34,6 +34,8 @@ const createUserObject = (id, email, token=undefined) => {
 }
 
 const postLogin = async(req, res, next) => {
+    const invalid_credentials_message = 'Invalid credentials'
+    
     try {
         const userFromDb = await selectUserByEmail(req.body.email)
         if (userFromDb.rowCount === 0) return next(new ApiError(invalid_credentials_message))
