@@ -51,6 +51,7 @@ function Home() {
       <h3>Todos</h3>
       <form>
         <input 
+          class="form-input"
           placeholder='Add new task' 
           value={task}
           onChange={(e) => setTask(e.target.value)}

@@ -1,10 +1,7 @@
 
 import { Router } from "express";
-
-import jwt from  "jsonwebtoken";
 import { postRegistation, postLogin } from "../controllers/userController.js";
 
-const { sign } = jwt;
 
 const router = Router();
 
