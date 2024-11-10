@@ -10,7 +10,7 @@ const {sign} = jwt
 
 const postRegistation = async(req, res, next) => {
     try {
-        if (!req.body.email || req.body.length === 0) {
+        if (!req.body.email || req.body.email.length === 0) {
             return next(new ApiError('Invalid email for user', 400))
         }
         if (!req.body.password || req.body.password.length < 8) {
